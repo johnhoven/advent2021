@@ -1,3 +1,5 @@
+var startTime = performance.now();
+
 var testInput = `fs-end
 he-DX
 fs-he
@@ -71,3 +73,6 @@ function visitAll(links, pathSoFar) {
 visitAll(caveMap["start"], "start-");
 
 console.log({ caveMap, visitsWithEnd });
+
+var endTime = performance.now();
+console.log(`took ${endTime - startTime} ms`);
