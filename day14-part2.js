@@ -29,6 +29,8 @@ var polymer = x[0];
 x.splice(0, 2);
 
 var templates = {};
+
+// Counts represents the Count of each type of polymer pairs at each iteration
 var counts = {};
 
 x.forEach((line, lineNo) => {
@@ -37,6 +39,7 @@ x.forEach((line, lineNo) => {
   counts[template] = 0;
 });
 
+// Set the initial pair counts
 var chars = polymer.split("");
 var i = chars.length - 2;
 while (i >= 0) {
@@ -45,10 +48,11 @@ while (i >= 0) {
   i--;
 }
 
-console.log(counts);
+//console.log(counts);
 
 var iters = 1;
 do {
+  // Record updated counts in new newCounts object, so original counts remains the same through all polymer pairs in this iteration
   var newCounts = {};
   for (var template in counts) {
     var c = counts[template] || 0;
@@ -57,18 +61,21 @@ do {
       var [c1, c2] = template.split("");
       var cx = templates[c1 + c2];
 
-      //newCounts[template] = 0;
+      // We don't have to set newCounts[c1 + c2] since it's a new object and its not there by default
+      // Each count in the original splits into two different pairs
       newCounts[c1 + cx] = (newCounts[c1 + cx] || 0) + c;
       newCounts[cx + c2] = (newCounts[cx + c2] || 0) + c;
     }
   }
 
+  // Finally, apply back to our counts variable
   counts = newCounts;
 
   console.log("done with " + iters.toString());
   iters++;
 } while (iters <= 40);
 
+// Only count the first character of each template.  Except for the last template, the second character will always appear in another template pair
 var individualCounts = {};
 for (var template in counts) {
   var [c1, c2] = template.split("");
@@ -78,9 +85,11 @@ for (var template in counts) {
   //individualCounts[c2] = (individualCounts[c2] || 0) + c;
 }
 
+// Handle that exception, the last character.  It never changes from the original polymer
 var finalChar = chars[chars.length - 1];
 individualCounts[finalChar] = (individualCounts[finalChar] || 0) + 1;
 
+// Find min and max
 var min = -1,
   max = -1;
 for (var polymerChar in individualCounts) {
