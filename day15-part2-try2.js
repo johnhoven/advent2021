@@ -94,7 +94,7 @@ function calculateTenativeDistance(fromNode, x, y) {
 
 function considerNeighbors(x, y) {
   var index = getIndex(x, y);
-  console.log(`working on ${index} - (${x},${y})`);
+  //console.log(`working on ${index} - (${x},${y})`);
   var fromNode = nodes[index];
 
   if (x < length - 1) {
