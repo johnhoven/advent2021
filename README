@@ -1,0 +1,9 @@
+Advent of Code 2021 Submissions
+https://adventofcode.com/
+
+Run in the browser's dev tool console, from puzzle input window.  Didn't save off days 1, 2, or 3 part 1.
+
+Most solutions are staged with the test input.  Comment out:
+    x = testInput.split("\n");
+To run on the real input.
+
