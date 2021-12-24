@@ -90,7 +90,7 @@ function getIndex(x, y) {
 }
 
 function getXY(index) {
-  return [Math.floor(index / length), index % length];
+  return [index % length, Math.floor(index / length)];
 }
 
 function move(x, y, fromX, fromY, costToEnd, recurse = true) {

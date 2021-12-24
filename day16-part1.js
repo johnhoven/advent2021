@@ -1,6 +1,6 @@
 var startTime = performance.now();
 
-var testInput = `620080001611562C8802118E34
+var testInput = `A0016C880162017C3686B18A3D4780
 `;
 
 var x = document.body.firstChild.textContent.split("\n");
