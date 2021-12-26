@@ -219,7 +219,6 @@ function Game() {
       }
 
       // Try moving to the right room
-      if (path == ".6.3.3.15.4.5.6.14.2.13.8.7.5.9" && i == 8) debugger;
       var [roomPoss, roomSteps, targetIndex] = roomPossible(state, i, index);
       if (roomPoss) {
         var [newState, newCost] = move(
